@@ -8,6 +8,7 @@ class Library:
         room = self._get_available_room()
         if room:
             room.add_book(book)
+            return True
         else:
             print(f"Library is full of books!")
             return False
@@ -103,12 +104,8 @@ class Shelf:
         self.available = True
     
     def add_book(self, book):
-        if len(self.books) < self.books_limit:
-            self.books.append(book)
-            if len(self.books) >= self.books_limit:
-                self.available = False
-        else:
-    
+        self.books.append(book)
+        if len(self.books) >= self.books_limit:
             self.available = False
 
 
